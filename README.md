@@ -102,9 +102,9 @@ Open `http://localhost:5173` in your browser.
 
 ## Deployment
 
-**Backend** — Deploy `server/` to Render or Railway. Add all `.env` variables in the platform dashboard.
+Deploy  to Render . Add all `.env` variables in the platform dashboard.
 
-**Frontend** — Deploy `client/` to Vercel. Set `VITE_API_URL` to your deployed backend URL.
+
 
 ---
 
