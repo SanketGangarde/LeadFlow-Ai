@@ -22,12 +22,13 @@ require('./config/passport')(passport);
 const allowedOrigins = [
   'http://localhost:5173',
   'http://127.0.0.1:5173',
-  process.env.CLIENT_URL  // Set this on Render to your deployed frontend URL
+  'https://leadflow-ai-03sa.onrender.com', // Production URL
+  process.env.CLIENT_URL  // Optional: override via environment variable
 ].filter(Boolean);
 
 app.use(cors({
   origin: (origin, callback) => {
-    // Allow same-origin requests (when frontend is served by this same server)
+    // Allow same-origin requests (no origin header = server-to-server or same origin)
     if (!origin || allowedOrigins.includes(origin)) return callback(null, true);
     callback(new Error('Not allowed by CORS'));
   },
