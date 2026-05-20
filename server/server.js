@@ -60,15 +60,22 @@ app.use(passport.session());
 // Routes
 app.use('/api', apiRoutes);
 
-// Serve React frontend static files in production
+// Serve React frontend static files
 const fs = require('fs');
 const clientBuildPath = path.join(__dirname, 'public');
+const indexHtmlPath = path.join(clientBuildPath, 'index.html');
 
-if (fs.existsSync(clientBuildPath)) {
+console.log('Static files path:', clientBuildPath);
+console.log('index.html exists:', fs.existsSync(indexHtmlPath));
+
+if (fs.existsSync(indexHtmlPath)) {
+  // Serve assets (JS, CSS, images) from the public folder
   app.use(express.static(clientBuildPath));
-  // Catch-all: serve React's index.html for any non-API route (supports React Router)
-  app.get('/{*path}', (req, res) => {
-    res.sendFile(path.join(clientBuildPath, 'index.html'));
+
+  // Catch-all: for any page route, serve index.html (React Router handles it)
+  app.use((req, res, next) => {
+    if (req.path.startsWith('/api')) return next();
+    res.sendFile(indexHtmlPath);
   });
 } else {
   app.get('/', (req, res) => {
