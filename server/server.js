@@ -61,14 +61,20 @@ app.use(passport.session());
 app.use('/api', apiRoutes);
 
 // Serve React frontend static files in production
+const fs = require('fs');
 const clientBuildPath = path.join(__dirname, '..', 'client', 'dist');
-app.use(express.static(clientBuildPath));
 
-// Catch-all: serve React's index.html for any non-API route (supports React Router)
-// Note: Express 5 requires '/{*path}' syntax instead of '*'
-app.get('/{*path}', (req, res) => {
-  res.sendFile(path.join(clientBuildPath, 'index.html'));
-});
+if (fs.existsSync(clientBuildPath)) {
+  app.use(express.static(clientBuildPath));
+  // Catch-all: serve React's index.html for any non-API route (supports React Router)
+  app.get('/{*path}', (req, res) => {
+    res.sendFile(path.join(clientBuildPath, 'index.html'));
+  });
+} else {
+  app.get('/', (req, res) => {
+    res.send('LeadFlow AI Backend is running. (Frontend not built yet)');
+  });
+}
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
