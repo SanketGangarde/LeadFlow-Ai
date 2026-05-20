@@ -1,0 +1,138 @@
+.dashboard-container {
+  padding-top: 3rem;
+  padding-bottom: 5rem;
+}
+
+.dashboard-header {
+  margin-bottom: 2.5rem;
+}
+
+.dashboard-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.dashboard-header p {
+  color: var(--text-light);
+  font-size: 1.1rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.stat-card {
+  background: var(--white);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border);
+}
+
+.stat-title {
+  color: var(--text-light);
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.stat-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.text-primary {
+  color: var(--primary);
+}
+
+.dashboard-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-dark);
+}
+
+.table-responsive {
+  overflow-x: auto;
+  background: var(--white);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.data-table th,
+.data-table td {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.data-table th {
+  background-color: #F8FAFC;
+  font-weight: 600;
+  color: var(--text-light);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.data-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.data-table tbody tr:hover {
+  background-color: #F8FAFC;
+}
+
+.font-medium {
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.text-sm {
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+
+.text-dark {
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
+.ai-summary {
+  max-width: 300px;
+  font-style: italic;
+  color: var(--text-light);
+  font-size: 0.9rem;
+}
+
+.status-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 2rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.status-hot {
+  background-color: #FEE2E2;
+  color: #991B1B;
+}
+
+.status-warm {
+  background-color: #FEF3C7;
+  color: #92400E;
+}
+
+.status-cold {
+  background-color: #E0F2FE;
+  color: #075985;
+}
