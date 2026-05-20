@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 import '../styles/Chatbot.css';
+import cleanAIResponse from '../utils/cleanAIResponse';
 
 const API_URL = import.meta.env.VITE_API_URL || 'https://leadflow-ai-03sa.onrender.com/api';
 
@@ -31,7 +32,8 @@ const Chatbot = () => {
 
     try {
       const response = await axios.post(`${API_URL}/chat`, { message: userMsg });
-      setMessages(prev => [...prev, { text: response.data.reply, isBot: true }]);
+      const cleanedReply = cleanAIResponse(response.data.reply);
+      setMessages(prev => [...prev, { text: cleanedReply, isBot: true }]);
     } catch (error) {
       setMessages(prev => [...prev, { text: "Sorry, I'm having trouble connecting right now.", isBot: true }]);
     } finally {
