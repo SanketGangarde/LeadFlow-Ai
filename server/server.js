@@ -62,7 +62,7 @@ app.use('/api', apiRoutes);
 
 // Serve React frontend static files in production
 const fs = require('fs');
-const clientBuildPath = path.join(__dirname, '..', 'client', 'dist');
+const clientBuildPath = path.join(__dirname, 'public');
 
 if (fs.existsSync(clientBuildPath)) {
   app.use(express.static(clientBuildPath));
